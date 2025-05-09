@@ -1,0 +1,12 @@
+langchain
+langchain-community
+langchain-huggingface
+sentence-transformers
+faiss-cpu
+duckduckgo-search
+nltk
+pypdf
+llama-cpp-python
+torch
+transformers
+accelerate
