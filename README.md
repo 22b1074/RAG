@@ -96,30 +96,26 @@ The following flow illustrates the entire pipeline of the system:
 
 ```mermaid
 flowchart TD
-    A[Documents] --> B[Sentence based Chunking (NLTK)]
+    A[Documents] --> B[Sentence based Chunking - NLTK]
     B --> C[Embedding Model]
     C --> D[(FAISS Vector DB)]
-
+    
     subgraph Retrieval_Pipeline
-        E1[User Query (Text or Voice)] --> E2[ASR -> Lang Detect -> Translate]
+        E1[User Query - Text or Voice] --> E2[ASR Language Detect Translate]
         E2 --> E3[Query Embedding]
         E3 --> E4[FAISS Top 10 Retrieval]
         E4 --> E5[Cross Encoder Reranker]
         E5 --> E6[Top k Relevant Chunks]
     end
-
+    
     D --> E4
-
     E6 --> F[LLaMA LLM]
-
     F --> G1[Answer from RAG]
-    F --> G2[Web Search (DuckDuckGo Fallback)]
-
+    F --> G2[Web Search - DuckDuckGo Fallback]
     G1 --> H[Translate Back to User Language]
     G2 --> H
-    H --> I[TTS -> Audio Output]
-
-    %% Memory connections
+    H --> I[TTS Audio Output]
+    
     E1 --> M[(Memory DB)]
     F --> M
     G1 --> M
