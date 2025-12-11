@@ -94,32 +94,29 @@ A complete Retrieval-Augmented Generation (RAG) pipeline designed for humanoid c
 
 The following flow illustrates the entire pipeline of the system:
 
-A[📄 Documents] --> B[Sentence-based Chunking (NLTK)]
-B --> C[Embedding Model]
-C --> D[(FAISS Vector DB)]
+```mermaid
+flowchart TD
 
-subgraph Retrieval
-    E1[User Query (Text/Voice)]
-    E1 --> E2[ASR → Language Detection → Translation]
-    E2 --> E3[Query Embedding]
-    E3 --> E4[FAISS Retrieval]
-    E4 --> E5[Cross-Encoder Reranker]
-    E5 --> E6[Top-k Relevant Chunks]
-end
+    A[Documents] --> B[Sentence-based Chunking (NLTK)]
+    B --> C[Embedding Model]
+    C --> D[(FAISS Vector DB)]
 
-D --> E4
-E6 --> F[LLaMA LLM]
-F --> G1[Answer Generation]
-F --> G2[Web Search (DuckDuckGo)]
-G1 --> H[Translation Back to Original Language]
-G2 --> H
-H --> I[TTS → Audio Response 🎧]
-E1 --> M[(Memory DB)]
-F --> M
-G1 --> M
+    subgraph Retrieval
+        E1[User Query (Text/Voice)]
+        E1 --> E2[ASR → Language Detection → Translation]
+        E2 --> E3[Query Embedding]
+        E3 --> E4[FAISS Retrieval]
+        E4 --> E5[Cross-Encoder Reranker]
+        E5 --> E6[Top-k Relevant Chunks]
+    end
 
-style Retrieval fill:#F5F5FF,stroke:#666,stroke-width:1px
-style D fill:#FFF8E1,stroke:#E0C400,stroke-width:1px
-style F fill:#E3F2FD,stroke:#2196F3,stroke-width:1px
-style M fill:#F0FFF4,stroke:#4CAF50,stroke-width:1px
-style I fill:#E8EAF6,stroke:#3F51B5,stroke-width:1px
+    D --> E4
+    E6 --> F[LLaMA LLM]
+    F --> G1[Answer Generation]
+    F --> G2[Web Search (DuckDuckGo)]
+    G1 --> H[Translation Back to Original Language]
+    G2 --> H
+    H --> I[TTS → Audio Response]
+    E1 --> M[(Memory DB)]
+    F --> M
+    G1 --> M
