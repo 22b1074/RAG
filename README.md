@@ -87,7 +87,7 @@ A complete Retrieval-Augmented Generation (RAG) pipeline designed for humanoid c
 | LLM | `LlamaCpp` (LLaMA 2 - 7B) |
 | Memory | LangChain conversational memory |
 | Web Search | DuckDuckGo Search API |
-| Speech & Translation | ASR, Google Translate API / any TTS engine |
+| Speech & Translation | Google Translate |
 
 ---
 ## 🏗️ Architecture Diagram
