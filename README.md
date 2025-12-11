@@ -101,7 +101,7 @@ flowchart TD
     C --> D[(FAISS Vector DB)]
     
     subgraph Retrieval_Pipeline
-        E1[User Query - Text or Voice] --> E2[ASR Language Detect Translate]
+        E1[User Query - Text or Voice] --> E2[Google Language Detect Translate]
         E2 --> E3[Query Embedding]
         E3 --> E4[FAISS Top 10 Retrieval]
         E4 --> E5[Cross Encoder Reranker]
